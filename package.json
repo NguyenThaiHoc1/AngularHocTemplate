@@ -1,0 +1,24 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NguyenThaiHoc1/AngularHocTemplate.git"
+  },
+  "author": "NTH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NguyenThaiHoc1/AngularHocTemplate/issues"
+  },
+  "homepage": "https://github.com/NguyenThaiHoc1/AngularHocTemplate#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
