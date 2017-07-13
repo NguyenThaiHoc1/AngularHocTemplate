@@ -4,11 +4,79 @@
     <meta charset="utf-8">
     <title>Testing angular</title>
     <script src="/component/angular/angular.min.js"></script>
+    <style>
+      table, tr, td {
+        border: 1px solid red;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+
+      table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+      } 
+
+      table tr:nth-child(even) {
+        background-color: #ffffff;
+      }
+    </style>
   </head>
   <body>
-     <label>Name:</label>
-     <input type="text" ng-model="yourName" placeholder="Enter a name here">
-     <hr>
-     <h1>Hello {{yourName}}!</h1>
+    <h2>Ung dung AngularJS</h2>
+
+    
+    <div ng-app="ungdungAngularjs" ng-controller="employeeController">
+        <from action="/" method="post">
+          <!-- mình nghĩ nó chỉ thay thế 1 phần việc kiểm tra vẫn nên dủng query validation để check cho tốt-->
+          <input type="text" name="numberStudentNeed" id="numbercounter" value="1">
+          <button type="submit" ng-click="clichsubmitsend()">Submit</button>
+          <button type="button" ng-click="checkscope()">text</button>
+        </from>
+
+
+         <table border="0">
+              <tr ng-repeat="student in myWelcome">
+                <td>{{ student.hoten }} </td>
+                <td>{{ student.age }} </td>
+              </tr>
+        </table>
+    </div>
+
+
+   
   </body>
+
+  <script>
+        // truyen dan du lieu tu server ve client ==> da ok 
+        // truyen dan du lieu tu client len server ==? 
+        var angulaJSsx = angular.module('ungdungAngularjs', []);
+        angulaJSsx.controller('employeeController', function($scope, $http){
+
+          
+          $scope.clichsubmitsend = function(){
+                var counterfromTextbox = document.getElementById('numbercounter').value;
+                $http({
+                  method : "POST",
+                  url : "/",
+                  contentType : "application/json",
+                  data: JSON.stringify({count: counterfromTextbox}),
+                }).then(function (response) {
+                    // khi nhan du lieu ve thanh cong
+                    $scope.myWelcome = response.data;
+                  }, function (response) {
+                    response.statusText;
+                    alert(response.data);
+                });
+          }
+
+
+          $scope.checkscope =function() {
+            console.log('====================================');
+            console.log($scope);
+            console.log('====================================');
+          }
+        });
+
+
+        
+  </script>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Testing angular</title>
+    <script src="/component/angular/angular.min.js"></script>
+   
+  </head>
+    <body ng-app="myApp" ng-controller="myCtrl">
+
+        <h1 ng-repeat="x in records">{{x}}</h1>
+
+        <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function($scope) {
+        $scope.records = [
+            "Alfreds Futterkiste",
+            "Berglunds snabbköp",
+            "Centro comercial Moctezuma",
+            "Ernst Handel",
+        ]
+        });
+        </script>
+    </body>
+</html>
